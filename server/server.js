@@ -5,7 +5,7 @@ const app = express();
 
 app.get('/', (req, res)=>{
   res.status(404).send({
-    error: 'Page Not found',
+    error: 'Page Not',
     name:'Todo App 1.0'
   });
 });
