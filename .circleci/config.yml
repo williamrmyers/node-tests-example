@@ -13,8 +13,10 @@ jobs:
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
-      
+
     steps:
+      - run: |
+          curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/fossas/fossa-cli/master/install.sh | bash
       - checkout
 
       # Download and cache dependencies
@@ -25,6 +27,9 @@ jobs:
           - v1-dependencies-
 
       - run: npm install
+      - run:
+          command: fossa
+
 
       - save_cache:
           paths:
